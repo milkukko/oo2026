@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+int game(int maxnum) {
+    std::srand(std::time(nullptr));
+    int etsittava_luku = std::rand() % maxnum + 1;
+    int arvaus = 0;
+    int arvausten_maara = 0;
+
+    while (arvaus != etsittava_luku) {
+        std::cout << "Arvaa luku (1-" << maxnum << "): ";
+        std::cin >> arvaus;
+        arvausten_maara++;
+
+        if (arvaus < etsittava_luku) {
+            std::cout << "Liian pieni" << std::endl;
+        } else if (arvaus > etsittava_luku) {
+            std::cout << "Liian suuri" << std::endl;
+        } else {
+            std::cout << "Oikein!" << std::endl;
+        }
+    }
+    return arvausten_maara;
+}
+
+int main() {
+    int maara = game(40);
+    std::cout << " Arvasit oikein " << maara << " ensimmäisellä kerralla " << std::endl;
+}
+
+
+
